@@ -1,0 +1,10 @@
+
+La carpeta Include contiene los . hpp , es decir contiene las defininiciones de los metodos realizados en los .cpp
+-> El sort.hpp es el que posee las definiciones de las funciones indispensables y 'centrales' de nuestro codigo.
+-> El utils contiene definiciones funciones utiles para el codigo 'central', el proposito de este .hpp es definir funciones para ayudarnos a realizar el sort.hpp
+
+La carpeta src es la que contiene los .cpp , los cuales poseen la 'funciones' definidas en los .hpp
+-> El sort.cpp es el que posee las funciones indispensables y 'centrales' de nuestro codigo.
+-> El utils contiene funciones utiles para el codigo 'central', el proposito de este .cpp es contener las funciones para ayudarnos a realizar el sort.cpp
+
+La carpeta test contiene el codigo principal (es el que tiene el main)
