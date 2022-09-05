@@ -62,7 +62,61 @@ namespace sort{
 	}
 
 	//Crear el metodo de MergeSort
+	void merge(int arr[], int p, int q, int r){
+		int a1 = q - p +1;
+		int a2 = r - q;
 
+		
+		int l[a1], m[a2];
+
+		for (int i = 0; i < a1; i++){
+			l[i] = arr[p + i];
+		}
+			
+		for (int j = 0; j < a2; j++){
+			m[j] = arr[q + 1 + j];
+		}
+	
+		int x = 0;
+		int y = 0;
+		int z = p;
+
+		while (x < a1 && y < a2) {
+			if (l[x] <= m[y]) {
+				arr[z] = l[x];
+				x++;
+			}
+			else {
+				arr[z] = m[y];
+				y++;
+			}
+			z++;
+		}
+
+		while(x < a1) {
+			arr[z] = l[x];
+			x++;
+			z++;
+		}
+
+		while(y < a2) {
+			arr[z] = m[y];
+			y++;
+			z++;
+		}
+
+	}
+	
+	void mergeSort(int arr[], int l, int r){
+		if (l < r) {
+			int f = l + (r-1) / 2;
+
+			mergeSort(arr, l, f);
+			mergeSort(arr, f + 1, r);
+			merge(arr, l, f, r);
+		}
+	}
+	
 
 	//Crear el metodo de RadixSort
 	
