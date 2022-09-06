@@ -22,7 +22,7 @@ void testSort(int max_size, int n_sizes){
 		auto start = std::chrono::high_resolution_clock::now(); 
 
 		//change the sort method here
-		sort::quickSort(A, n);		//Este metodo es el que se cambia para poder obtener los datos de cada alg. de ordenacion
+		sort::insertionSort(A, n);		//Este metodo es el que se cambia para poder obtener los datos de cada alg. de ordenacion
 
 		auto end = std::chrono::high_resolution_clock::now();
 		long elapsed =  getElapsedTime(start, end);
@@ -35,25 +35,25 @@ void testSort(int max_size, int n_sizes){
 
 int main(int nargs, char** nvargs){
 	int n_sizes = 10;
-	int max_size = 1000000;		//Este max_size se cambia, es 100000 para tamaños pequeños y es 1000000 para tamaños grandes
+	int max_size = 100000;		//Este max_size se cambia, es 100000 para tamaños pequeños y es 1000000 para tamaños grandes
 	testSort(max_size, n_sizes);
 	return 0;
 }
 
-
-/*int main(int nargs, char** args){
+/*
+int main(int nargs, char** args){
 
 	std::srand(std::time(nullptr));
 	int n = 10;
 	float* A = sort::createRandomIntArray(n, 0, 100);
 	sort::printArray(A, n);
-	std::cout << sort::k_smallest(A, n, 2);
-//	auto start = std::chrono::high_resolution_clock::now();
-//	sort::quickSort(A, n);
-//	sort::printArray(A, n);
-//	sort::deleteArray(A);
-//	auto end = std::chrono::high_resolution_clock::now();
-//	std::cout<<" Elapsed : " << getElapsedTime(start, end) << std::endl;
+	std::cout << sort:: insertionSort( A, n );
+	auto start = std::chrono::high_resolution_clock::now();
+	sort::insertionSort(A, n);
+	sort::printArray(A, n);
+	sort::deleteArray(A);
+	auto end = std::chrono::high_resolution_clock::now();
+	std::cout<<" Elapsed : " << getElapsedTime(start, end) << std::endl;
 	return 0;
 }
 */

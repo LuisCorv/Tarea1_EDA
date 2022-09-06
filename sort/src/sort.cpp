@@ -3,20 +3,20 @@
 #include "sort/utils.hpp"
 
 namespace sort{
-	//Crear el metodo de Insercion Sort
-	void insertionSort(int arr[], int n) {
+	//Metodos de Insertion Sort
+	void insertionSort(float* A, int n) {
 		for (int i = 1; i < n; i++){
-			int k = arr[i];
+			int k = A[i];
 			int j = i -1;
 
-			while (k < arr[j] && j >= 0) {
-				arr[j+1] = arr[j];
+			while (k < A[j] && j >= 0) {
+				A[j+1] = A[j];
 				--j;
 			}
-			arr[j + 1] = k;
+			A[j + 1] = k;
 		}
 	}
-
+	//Metodos de Selection Sort
 	void selectionSort(float* A, int n){
 		int smallest = 0;
 		int i = 0;
@@ -32,6 +32,7 @@ namespace sort{
 		}
 	}
 
+	//Metodos de QuickSort
 	int split_qs(float* A, int i, int j){
 		/***
 		 * split for quicksort
@@ -73,8 +74,8 @@ namespace sort{
 		quickSort(A, 0, n - 1);
 	}
 
-	//Crear el metodo de MergeSort
-	void merge(int arr[], int p, int q, int r){
+	//Metodos de MergeSort
+	void merge(float* A, int p, int q, int r){
 		int a1 = q - p +1;
 		int a2 = r - q;
 
@@ -82,11 +83,11 @@ namespace sort{
 		int l[a1], m[a2];
 
 		for (int i = 0; i < a1; i++){
-			l[i] = arr[p + i];
+			l[i] = A[p + i];
 		}
 			
 		for (int j = 0; j < a2; j++){
-			m[j] = arr[q + 1 + j];
+			m[j] = A[q + 1 + j];
 		}
 	
 		int x = 0;
@@ -95,37 +96,37 @@ namespace sort{
 
 		while (x < a1 && y < a2) {
 			if (l[x] <= m[y]) {
-				arr[z] = l[x];
+				A[z] = l[x];
 				x++;
 			}
 			else {
-				arr[z] = m[y];
+				A[z] = m[y];
 				y++;
 			}
 			z++;
 		}
 
 		while(x < a1) {
-			arr[z] = l[x];
+			A[z] = l[x];
 			x++;
 			z++;
 		}
 
 		while(y < a2) {
-			arr[z] = m[y];
+			A[z] = m[y];
 			y++;
 			z++;
 		}
 
 	}
 	
-	void mergeSort(int arr[], int l, int r){
+	void mergeSort(float* A, int l, int r){ //revisar para ver como hacer funcionar con solo A y n como datos de ingreso
 		if (l < r) {
 			int f = l + (r-1) / 2;
 
-			mergeSort(arr, l, f);
-			mergeSort(arr, f + 1, r);
-			merge(arr, l, f, r);
+			mergeSort(A, l, f);
+			mergeSort(A, f + 1, r);
+			merge(A, l, f, r);
 		}
 	}
 	
