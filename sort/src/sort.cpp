@@ -140,31 +140,36 @@ namespace sort{
 	}
 
 	//Crear el metodo de RadixSort
-	void bucketSort(float* A, int M, int h, int n){
-		//se crean B con  M buckets
-		//for n° perteneciente a A
-			//
-		int k=0;
+	void bucketSort(float* A, int n, int h){ // https://www.geeksforgeeks.org/radix-sort/ (es el primer codigo de Radixsort)
+
 		float * A_aux= createArray(n);
 		setAll(A_aux,n,0);
-		for (int i=0; i<M; i++){
-			//if B[i] != vacio
-				//for b perteneciente a B[i]
-					//A_aux[k] = A[b];
-					k++;
+		int i, count[10] = { 0 };
+	
+		// Store count of occurrences in count[]
+		for (i = 0; i < n; i++)
+			count[(((int)A[i]) / h) % 10]++;
+	
+		// Change count[i] so that count[i] now contains actual position of this digit in output[]
+		for (i = 1; i < 10; i++)
+			count[i] += count[i - 1];
+	
+		// Build the A_aux array
+		for (i = n - 1; i >= 0; i--) {
+			A_aux[count[(((int)A[i]) / h) % 10] - 1] = A[i];
+			count[(((int)A[i]) / h) % 10]--;
+		}
+		// Copy the A_aux array to A, so that A now contains sorted numbers according to current digit
+		for (i = 0; i < n; i++)
+			A[i] = A_aux[i];
 
-		}
-		for (int l = 0; l < n; l++){
-			A[l] = A_aux[l];
-		}
+		deleteArray(A_aux);
 	}
 
-	void radixSort(float* A, int n){
-		int M = 100;
-		int h=n;
-		while (h>-1){
-			bucketSort(A,M,h,n);
-			h--;
+	void radixSort(float* A, int n){  // https://www.geeksforgeeks.org/radix-sort/ (es el primer codigo de Radixsort)
+		int M = getMax(A,n);
+		for (int h=1; M/h >0;h*=10){
+			bucketSort(A,n,h);
 		}
 	}
 

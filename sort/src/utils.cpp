@@ -64,4 +64,14 @@ namespace sort{
 		}
 		return V;
 	}
+	int getMax( float * A, int s){ // https://www.geeksforgeeks.org/radix-sort/ (es el primer codigo de Radixsort)
+		int mx = A[0];
+		for (int i=0; i<s ;i++){
+			if (A[i] > mx){
+				mx = A[i];
+			}
+		}
+		return mx;
+	}
+
 }
