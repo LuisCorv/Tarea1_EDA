@@ -75,64 +75,98 @@ namespace sort{
 	}
 
 	//Metodos de MergeSort
-	void merge(float* A, int p, int q, int r){
-		int a1 = q - p +1;
-		int a2 = r - q;
-
+	void merge(float* A, int i, int k, int j){
+		int a1 = j - i +1;
 		
-		int l[a1], m[a2];
-
-		for (int i = 0; i < a1; i++){
-			l[i] = A[p + i];
-		}
-			
-		for (int j = 0; j < a2; j++){
-			m[j] = A[q + 1 + j];
-		}
-	
-		int x = 0;
-		int y = 0;
-		int z = p;
-
-		while (x < a1 && y < a2) {
-			if (l[x] <= m[y]) {
-				A[z] = l[x];
-				x++;
+		float * A_aux= createArray(a1);
+		setAll(A_aux,a1,0);
+		
+		int q=0;
+		int p1=i;
+		int p2=k+1 ;
+		
+		while (p1 <= k && p2 <= j) {
+			if (A[p1] <= A[p2]) {
+				A_aux[q] = A[p1];
+				p1++;
+				
+			}
+			else if (A[p1]==A[p2]){
+				A_aux[q] = A[p1];
+				p1++;
+				q++;
+				A_aux[q] = A[p2];
+				p2++;
 			}
 			else {
-				A[z] = m[y];
-				y++;
+				A_aux[q] = A[p2];
+				p2++;
 			}
-			z++;
+			q++;
 		}
 
-		while(x < a1) {
-			A[z] = l[x];
-			x++;
-			z++;
+		while(p1 <= k) {
+			A_aux[q] = A[p1];
+			p1++;
+			q++;
 		}
 
-		while(y < a2) {
-			A[z] = m[y];
-			y++;
-			z++;
+		while(p2 <= j) {
+			A_aux[q] = A[p2];
+			p2++;
+			q++;
 		}
-
+		
+		for (int l = 0; l < a1-1; l++){
+			A[i+l] = A_aux[l];
+		}
+		
+		deleteArray(A_aux);
+		printArray(A,j);
+		
 	}
 	
-	void mergeSort(float* A, int l, int r){ //revisar para ver como hacer funcionar con solo A y n como datos de ingreso
-		if (l < r) {
-			int f = l + (r-1) / 2;
-
-			mergeSort(A, l, f);
-			mergeSort(A, f + 1, r);
-			merge(A, l, f, r);
+	void mergeSort(float* A, int i, int j){ //Arreglar el mergeSort para que ordene los datos , ya que ahora no los ordena corectamente
+		int k = (i + j) / 2;
+		if (i < j) {
+			mergeSort(A, i, k);
+			mergeSort(A, k+ 1, j);
+			merge(A, i, k , j);
 		}
 	}
 	
+	void mergeSort(float* A, int n){
+		mergeSort(A, 0, n);
+	}
 
 	//Crear el metodo de RadixSort
-	
+	void bucketSort(float* A, int M, int h, int n){
+		//se crean B con  M buckets
+		//for n° perteneciente a A
+			//
+		int k=0;
+		float * A_aux= createArray(n);
+		setAll(A_aux,n,0);
+		for (int i=0; i<M; i++){
+			//if B[i] != vacio
+				//for b perteneciente a B[i]
+					//A_aux[k] = A[b];
+					k++;
+
+		}
+		for (int l = 0; l < n; l++){
+			A[l] = A_aux[l];
+		}
+	}
+
+	void radixSort(float* A, int n){
+		int M = 100;
+		int h=n;
+		while (h>-1){
+			bucketSort(A,M,h,n);
+			h--;
+		}
+	}
 
 }
 

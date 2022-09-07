@@ -32,6 +32,7 @@ void testSort(int max_size, int n_sizes){
 	delete[] sizes;
 }
 
+//Usar este main si se desea ver los tiempos de ejecucion de un alg. de ordenacion
 
 int main(int nargs, char** nvargs){
 	int n_sizes = 10;
@@ -40,6 +41,8 @@ int main(int nargs, char** nvargs){
 	return 0;
 }
 
+
+// Usar este main si se quiere ver si funciona un alg. de ordenacion
 /*
 int main(int nargs, char** args){
 
@@ -47,9 +50,9 @@ int main(int nargs, char** args){
 	int n = 10;
 	float* A = sort::createRandomIntArray(n, 0, 100);
 	sort::printArray(A, n);
-	std::cout << sort:: insertionSort( A, n );
+	//std::cout << sort:: insertionSort( A, n );
 	auto start = std::chrono::high_resolution_clock::now();
-	sort::insertionSort(A, n);
+	sort::mergeSort(A, 0, n);
 	sort::printArray(A, n);
 	sort::deleteArray(A);
 	auto end = std::chrono::high_resolution_clock::now();

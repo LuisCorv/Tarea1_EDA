@@ -14,11 +14,13 @@ namespace sort {
 
 	void merge(float* A, int p, int q, int r);
 	void mergeSort(float* A, int l, int r);	// MergeSort
+	void mergeSort(float* A, int n);
 
 	
 	//♦♦♦♦♦Algoritmos de Ordenacion especifica♦♦♦♦♦
 	//Crear RadixSort
 
+	void radixSort(float* A, int n);
 }
 
 #endif
