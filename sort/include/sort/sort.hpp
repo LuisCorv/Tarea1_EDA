@@ -18,8 +18,8 @@ namespace sort {
 
 	
 	//♦♦♦♦♦Algoritmos de Ordenacion especifica♦♦♦♦♦
-	//Crear RadixSort
-
+	
+	void bucketSort(float* A, int n, int h);
 	void radixSort(float* A, int n);
 }
 
