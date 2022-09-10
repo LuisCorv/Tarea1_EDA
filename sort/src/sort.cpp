@@ -83,7 +83,7 @@ namespace sort{
 		int f2 = f;
 		int j = 0;
 
-		float prueba[i, f];
+		float prueba[f];
 
 		while((i1 <= f1) && (i2 <= f2)){
 			if (A[i1] < A[i2]){

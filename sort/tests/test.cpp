@@ -22,7 +22,7 @@ void testSort(int max_size, int n_sizes){
 		auto start = std::chrono::high_resolution_clock::now(); 
 
 		//change the sort method here
-		sort::radixSort(A, n);		//Este metodo es el que se cambia para poder obtener los datos de cada alg. de ordenacion
+		sort::mergeSort(A, 0, n);		//Este metodo es el que se cambia para poder obtener los datos de cada alg. de ordenacion
 
 		auto end = std::chrono::high_resolution_clock::now();
 		long elapsed =  getElapsedTime(start, end);
@@ -33,17 +33,17 @@ void testSort(int max_size, int n_sizes){
 }
 
 //Usar este main si se desea ver los tiempos de ejecucion de un alg. de ordenacion
-/*
+
 int main(int nargs, char** nvargs){
 	int n_sizes = 10;
-	int max_size = 100000;		//Este max_size se cambia, es 100000 para tamaños pequeños y es 1000000 para tamaños grandes
+	int max_size = 1000000;		//Este max_size se cambia, es 100000 para tamaños pequeños y es 1000000 para tamaños grandes
 	testSort(max_size, n_sizes);
 	return 0;
 }
-*/
+
 
 // Usar este main si se quiere ver si funciona un alg. de ordenacion
-
+/*
 int main(int nargs, char** args){
 
 	std::srand(std::time(nullptr));
@@ -59,3 +59,4 @@ int main(int nargs, char** args){
 	std::cout<<" Elapsed : " << getElapsedTime(start, end) << std::endl;
 	return 0;
 }
+*/
