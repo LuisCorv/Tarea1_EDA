@@ -75,69 +75,60 @@ namespace sort{
 	}
 
 	//Metodos de MergeSort
-	void merge(float* A, int i, int k, int j){
-		int a1 = j - i +1;
-		
-		float * A_aux= createArray(a1);
-		setAll(A_aux,a1,0);
-		
-		int q=0;
-		int p1=i;
-		int p2=k+1 ;
-		
-		while (p1 <= k && p2 <= j) {
-			if (A[p1] <= A[p2]) {
-				A_aux[q] = A[p1];
-				p1++;
-				
+	void merge(float* A, int i, int m, int f){
+
+		int i1 = i;
+		int i2 = m + 1;
+		int f1 = m;
+		int f2 = f;
+		int j = 0;
+
+		float prueba[i, f];
+
+		while((i1 <= f1) && (i2 <= f2)){
+			if (A[i1] < A[i2]){
+				prueba[j] = A[i1];
+				i1 = i1 + 1;
+				j++;
 			}
-			else if (A[p1]==A[p2]){
-				A_aux[q] = A[p1];
-				p1++;
-				q++;
-				A_aux[q] = A[p2];
-				p2++;
+			else{
+				prueba[j] = A[i2];
+				i2 = i2 + 1;
+				j++;
 			}
-			else {
-				A_aux[q] = A[p2];
-				p2++;
-			}
-			q++;
+
 		}
 
-		while(p1 <= k) {
-			A_aux[q] = A[p1];
-			p1++;
-			q++;
+		while (i1 <= f1){
+			prueba[j] = A[i1];
+			i1 = i1 +1;
+			j++;
+		}
+		
+		while(i2 <= f2){
+			prueba[j] = A[i2];
+			i2 = i2 + 1;
+			j++;
 		}
 
-		while(p2 <= j) {
-			A_aux[q] = A[p2];
-			p2++;
-			q++;
+		int k;
+		j = 0;
+		for (k = i; k <= f; ++k) {
+			A[k] = prueba[j++];
 		}
-		
-		for (int l = 0; l < a1-1; l++){
-			A[i+l] = A_aux[l];
-		}
-		
-		deleteArray(A_aux);
-		printArray(A,j);
-		
+
 	}
 	
-	void mergeSort(float* A, int i, int j){ //Arreglar el mergeSort para que ordene los datos , ya que ahora no los ordena corectamente
-		int k = (i + j) / 2;
-		if (i < j) {
-			mergeSort(A, i, k);
-			mergeSort(A, k+ 1, j);
-			merge(A, i, k , j);
+	void mergeSort(float* A, int i, int f){ //Arreglar el mergeSort para que ordene los datos , ya que ahora no los ordena corectamente
+		int medio;
+		if(i < f){
+			medio = (i + f) / 2;
+			mergeSort(A, i, medio);
+			mergeSort(A, medio + 1, f);
+			merge(A, i, medio, f);
 		}
 	}
 	
-	void mergeSort(float* A, int n){
-		mergeSort(A, 0, n);
-	}
 
 	//Crear el metodo de RadixSort
 	void bucketSort(float* A, int n, int h){ // https://www.geeksforgeeks.org/radix-sort/ (es el primer codigo de Radixsort)
