@@ -12,9 +12,9 @@ namespace sort {
 	void quickSort(float* A, int i, int j);		//QuickSort
 	void quickSort(float* A, int n); 
 
-	void merge(float* A, int p, int q, int r);
-	void mergeSort(float* A, int l, int r);	// MergeSort
-	void mergeSort(float* A, int n);
+	void merge(float* A, int i, int m, int f);
+	void mergeSort(float* A, int i, int f);	// MergeSort
+
 
 	
 	//♦♦♦♦♦Algoritmos de Ordenacion especifica♦♦♦♦♦
