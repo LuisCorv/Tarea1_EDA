@@ -1,6 +1,81 @@
+Para poder compilar este codigo, se debe de tener instalado Cmake y un compilador de c++.
 
-En este archivo tenemos que poner los pasos para realizar la compilacion de todo el programa
- 
-♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
-Arreglar el mergeSort para que ordene los datos , ya que no los ordenaba corectamente
-♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
+Los pasos para utilizar el codigo son:
+
+    0°  Modificar , si se tuviese que, la version de cmake en el archivo CMakeLists.txt
+
+    1°  Ubicarse en la carpeta tests y abrir el test.cpp.
+
+    2°  Una vez abierto el test.cpp encontraran 2 funciones main(), la primera de ellas 
+    se utiliza con la funcion testSort(), la cual nos permite ver los tiempos de ejecucion de 
+    un arreglo de dimensiones y un metodo de ordenacion dado. Mientras que el segundo main(), nos permite probar si es que 
+    un metodo en especifico esta ordenando en verdad un arreglo al azar y tambien ver cuanto tiempo le toma hacer esto.
+
+    ♦♦♦♦
+    El nombre y condicionantes de los metodos de ordención son:
+        → insertSort (float * A , int n) , para el metodo de ordenación Inserción, donde A es un arreglo y n el tamaño del arreglo
+        → selectionSort (float * A , int n) , para el metodo de ordenación Selección, donde A es un arreglo y n el tamaño del arreglo
+        → quickSort (float * A , int n) , para el metodo de ordenación QuickSort, donde A es un arreglo y n el tamaño del arreglo
+        → mergeSort (float * A , int x , int n) , para el metodo de ordenación MergeSort, donde A es un arreglo , x es inicio del arreglo (normalmente =0) y n el tamaño del arreglo
+        → radixSort (float * A , int n) , para el metodo de ordenación RadixSort, donde A es un arreglo y n el tamaño del arreglo
+    ♦♦♦♦
+
+    2.1°    Si se desea ocupar el primer main() para un metodo de ordenacion dado, se debe :
+            →   Descomentar esa funcion, es decir eliminar el /* y */ que engloban ese main.
+
+            →   Comentar el segundo main(), es decir poner /* y */ para que engloben ese main.
+
+            →   Ir a la linea 25 del archivo test.cpp, en la funcion testSort(), y modificar el nombre de la funcion presente en ella, es decir, si
+                dice "sort:: mergeSort (A ,0 ,n); " y se desea hacer el metodo de Selección se debe de escribir en vez "sort:: selectionSort (A, n);"
+
+    2.2°    Si se desea ocupar el segundo main() para un metodo de ordenacion dado, se debe :
+            →   Descomentar esa funcion, es decir eliminar el /* y */ que engloban ese main
+
+            →   Comentar el primer main(), es decir poner /* y */ para que engloben ese main.
+
+            →   Ir a la linea 55 del archivo test.cpp y modificar el nombre de la funcion presente en ella, es
+                decir, si dice "sort:: radixSort (A , n);" y se desea hacer el metodo de Inserción
+                se debe de escribir en vez "sort:: insertionSort (A , n);".
+
+    3°  Se debe de compilar con Cmake todo el codigo. Para esto, se deben de ubicar en la carpeta tests y abrir la terminal.
+        Luego hacer que la terminal se ubique en la carpeta tests, ocupar el comando cmake .. (si fallase ocupe este cmake .. -G "MinGW Makefiles").
+        Una vez echo esto notaremos que se crearon nuevos archivos en la carpeta tests, incluyendo un Makefile. Para que se ejecute este Makefile se
+        debe de ejecutar el siguiente comando make (si fallase ocupe este mingw32-make). Con esto se nos deberia de generar un executable de nombre
+        test.exe . Para correr este ejecutable debe ingresar un comando que varia dependiendo de su dispositivo, en el caso de windows 
+        seria test.exe , y vea el resultado sobre el metodo deseado en la terminal. 
+        
+        Cabe recalcar que todos estos comandos se escriben en la terminal, y que el resultado tambien se muestra en esta.
+
+    3.1° En el caso de haber echo el paso 2.1°, deberia de mostrar algo de este estilo en la terminal:
+            →Si A es un arreglo que  debe llegar hasta un tamaño de 1.000.000, y que se va 'imprimiendo' cada 1/10 se alcanze,
+            lo que se imprimiria en la terminal seria  algo como un ['x', 'y'] , donde 'x' es el tamaño 'actual' de este arreglo de A,  e 'y' el tiempo que tomo hacer la ordenacion, es decir:
+                [100000,0]
+                [200000,1]
+                [300000,1]
+                [400000,2]
+                [500000,2]
+                [600000,2]
+                [700000,3]
+                [800000,3]
+                [900000,4]
+                [1000000,4]
+             
+
+    3.2° En el caso de haber echo el paso 2.2°, deberia de mostrar algo de este estilo en la terminal:
+            →Si A es un arreglo con el siguiente orden: [3,49,61,83,90,48,77,14,95,28]
+            Lo que se imprimiria en la terminal seria este arreglo de A, luego el arrglo ordenado de A y el tiempo que tomo, es decir:
+                3 49 61 83 90 48 77 14 95 28
+                3 14 28 48 49 61 77 83 90 95
+                 Elapsed : 3
+
+
+
+
+
+
+
+
+
+
+
+
